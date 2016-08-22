@@ -7,3 +7,6 @@ export const formatDate = timestamp => {
 };
 
 export const compact = arr => arr.filter(x => !!x);
+
+export const wait = (ms = 1) =>
+  new Promise(resolve => setTimeout(resolve, ms));

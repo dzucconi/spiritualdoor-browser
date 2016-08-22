@@ -1,8 +1,7 @@
 body {
   margin: 0;
-  /*-webkit-font-smoothing: antialiased;*/
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 a {
@@ -34,9 +33,23 @@ h3 {
   text-align: left;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.2);
-  left: 2em;
+  top: 0;
   right: 0;
+  font-family: sans-serif;
+  text-align: right;
 }
+
+.visualization {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+}
+  .visualization__cross {
+    position: absolute;
+  }
 
 .headings {
   /*
@@ -48,7 +61,6 @@ h3 {
   position: relative;
   margin: 0;
   padding: 1em;
-  border-bottom: 1px solid;
 }
   .heading__cross {
     pointer-events: none;

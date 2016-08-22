@@ -1,5 +1,8 @@
 import spinner from '../lib/spinner';
 import index from '../templates/index';
+import render from '../lib/render';
+import { animate } from '../lib/spinner';
+import cross from '../templates/cross';
 
 export default ctx => {
   spinner.run(ctx.els.indicator);
@@ -17,5 +20,14 @@ export default ctx => {
         next,
         headings,
       }));
+
+
+      const visualization = headings.map(heading => `
+        <div class='visualization__cross' style='transform: rotate(${heading.value}deg);'>
+          ${cross}
+        </div>
+      `);
+
+      animate(visualization).run(render(document.getElementById('visualization')));
     });
 };
