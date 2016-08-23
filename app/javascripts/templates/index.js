@@ -1,50 +1,75 @@
 import moment from 'moment';
-import cross from './cross';
 import query from '../lib/query';
-import { compact } from '../lib/helpers';
+import {
+  compact,
+  truncate,
+  pluck,
+} from '../lib/helpers';
 
 export default ({ total, next, params, headings }) => {
   const q = query(params);
+  const criteria = pluck(params, [
+    'ip',
+    'fingerprint',
+    'referer',
+    'next',
+  ]);
 
   return `
     <header class='header'>
-      <h1>
-        ${total} headings
-      </h1>
-
-      <h2>
-        ${compact([params.ip, params.fingerprint, params.referer, params.next]).join('<br>')}
-      </h2>
-
-      <nav>
-        <a href='?'>Reset</a>${next.cursor ? `<br><a href='?${q({ next: next.cursor })}'>Next</a>` : ''}
-      </nav>
+      ${total} headings @
+      ${compact(criteria).join(', ') || 'root'}
+      ${criteria.length ? '<a href="?">&lt;reset&gt;</a>' : ''}
+      <br>
+      ${next.cursor ? `<a href='?${q({ next: next.cursor })}'>&lt;forward&gt;</a>` : ''}
     </header>
 
     <div id='visualization' class='visualization'>
       <!-- Rendered separately -->
     </div>
 
-    <div class='headings'>
-      ${headings.map(heading => `
-        <div class='heading'>
-          <div class='heading__cross' style='transform: rotate(${heading.value}deg);'>
-            ${cross}
-          </div>
+    <table class='headings'>
+      <thead>
+        <th class='heading__cell--cross'>†</th>
+        <th class='heading__cell--value'>Value</th>
+        <th class='heading__cell--datetime'>Datetime</th>
+        <th class='heading__cell--fingerprint'>Fingerprint</th>
+        <th class='heading__cell--ip'>IP</th>
+        <th class='heading__cell--referer'>Referer</th>
+      </thead>
+      <tbody>
+        ${headings.map(heading => `
+          <tr class='heading'>
+            <td class='heading__cell--cross'>
+              <div class='heading__cross' style='transform: rotate(${heading.value}deg);'>
+                †
+              </div>
+            </td>
 
-          <div class='heading__value'>
-            <strong>${heading.value}</strong>
-            <br>
-            ${moment(heading.created_at).format('dddd, MMMM Do YYYY, h:mm:ss a')}
-          </div>
+            <td class='heading__cell--value'>
+              ${heading.value}°
+            </td>
 
-          <div class='heading__metadata'>
-            <a href='?${q({ ip: heading.ip })}'>${heading.ip}</a><br>
-            <a href='?${q({ fingerprint: heading.fingerprint })}'>${heading.fingerprint}</a><br>
-            <a href='?${q({ referer: heading.referer })}'>${heading.referer}</a>
-          </div>
-        </div>
-      `).join('')}
-    </div>
+            <td class='heading__cell--datetime'>
+              ${moment(heading.created_at).format('MMMM D, YYYY, h:mm:ss a')}
+            </td>
+
+            <td class='heading__cell--fingerprint'>
+              <a class='monospace' href='?${q({ fingerprint: heading.fingerprint })}'>${heading.fingerprint}</a>
+            </td>
+
+            <td class='heading__cell--ip'>
+              <a href='?${q({ ip: heading.ip })}'>${heading.ip}</a>
+            </td>
+
+            <td class='heading__cell--referer'>
+              <a href='?${q({ referer: heading.referer })}'>
+                ${truncate(heading.referer, 50)}
+              </a>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
   `;
 };

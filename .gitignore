@@ -24,3 +24,7 @@ node_modules/
 
 # Brunch output folder.
 public/
+
+# Secrets
+.env
+.s3config
