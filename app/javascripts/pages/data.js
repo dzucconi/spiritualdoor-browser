@@ -1,8 +1,8 @@
 import spinner from '../lib/spinner';
-import index from '../templates/index';
 import render from '../lib/render';
 import animate from '../lib/animate';
 import cross from '../templates/cross';
+import template from '../templates/data';
 
 export default ctx => {
   const indicator = spinner(ctx.els.indicator.el);
@@ -13,9 +13,11 @@ export default ctx => {
   ctx.collection
     .fetch(options)
     .then(({ total, next, headings }) => {
+      window.scrollTo(0, 0);
+
       indicator.stop();
 
-      ctx.els.stage(index({
+      ctx.els.stage(template({
         params: ctx.parsed,
         total,
         next,
