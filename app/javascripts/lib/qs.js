@@ -1,5 +1,5 @@
 export default {
-  parse: search =>
+  parse: (search = '') =>
     search
       .slice(search.indexOf('?') + 1)
       .split('&')

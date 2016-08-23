@@ -8,6 +8,7 @@ import {
 
 export default ({ total, next, params, headings }) => {
   const q = query(params);
+
   const criteria = pluck(params, [
     'ip',
     'fingerprint',
@@ -17,13 +18,14 @@ export default ({ total, next, params, headings }) => {
   return `
     <header class='header'>
       <nav class='nav'>
+        <a href='/'>Précis</a>
         ${total} records
-        @${compact(criteria).join('<wbr>:<wbr>') || 'root'}${params.next ? `<wbr>:<wbr>${params.next}` : ''}
-        ${criteria.length || params.next ? '<a href="?">reset</a>' : ''}
+        @${compact(criteria).join('<wbr>:<wbr>') || 'Root'}${params.next ? `<wbr>:<wbr>${params.next}` : ''}
+        ${criteria.length || params.next ? '<a href="/data">Reset</a>' : ''}
       </nav>
     </header>
 
-    ${next.cursor ? `<a class='next' href='?${q({ next: next.cursor })}'>
+    ${next.cursor ? `<a class='next' href='/data?${q({ next: next.cursor })}'>
       ➝
     </a>` : ''}
 
@@ -63,17 +65,17 @@ export default ({ total, next, params, headings }) => {
               </td>
 
               <td class='heading__cell--fingerprint'>
-                <a class='monospace' title='${heading.fingerprint}' href='?${q({ fingerprint: heading.fingerprint })}'>
+                <a class='monospace' title='${heading.fingerprint}' href='/data?${q({ fingerprint: heading.fingerprint })}'>
                   ${truncate(heading.fingerprint, 7, '')}
                 </a>
               </td>
 
               <td class='heading__cell--ip priority--tertiary'>
-                <a href='?${q({ ip: heading.ip })}'>${heading.ip}</a>
+                <a href='/data?${q({ ip: heading.ip })}'>${heading.ip}</a>
               </td>
 
               <td class='heading__cell--referer priority--secondary'>
-                <a href='?${q({ referer: heading.referer })}'>
+                <a href='/data?${q({ referer: heading.referer })}'>
                   ${truncate(heading.referer, 50)}
                 </a>
               </td>
