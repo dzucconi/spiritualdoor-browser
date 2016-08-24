@@ -18,7 +18,7 @@ export default ({ total, next, params, headings }) => {
   return `
     <header class='header'>
       <nav class='nav'>
-        <a href='/'>Précis</a>
+        <a href='/'>Home</a>
         ${total} records
         @${compact(criteria).join('<wbr>:<wbr>') || 'Root'}${params.next ? `<wbr>:<wbr>${params.next}` : ''}
         ${criteria.length || params.next ? '<a href="/data">Reset</a>' : ''}

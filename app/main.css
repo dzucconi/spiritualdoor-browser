@@ -70,6 +70,11 @@ table {
   font-family: monospace;
 }
 
+.sans {
+  font-family: sans-serif;
+  font-size: 90%;
+}
+
 .indicator {
   position: fixed;
   top: 30px;
@@ -193,17 +198,19 @@ table {
   font-size: 24px;
   max-width: 800px;
 }
-  .precis > p,
-  .precis > footer {
-    margin: 0;
-  }
-    .precis > p > a {
-      font-family: monospace;
-    }
+  .precis__header {}
   .precis__footer {}
-    .precis__footer > a {
-      border-bottom: 2px solid;
-    }
+
+.precis__cross {
+  display: inline-block;
+}
+
+.precis a {
+  transition: opacity 0.125s;
+}
+  .precis a:hover {
+    opacity: 0.5;
+  }
 
 @media (max-width: 800px) {
   .precis {
