@@ -18,14 +18,14 @@ export default ({ total, next, params, headings }) => {
   return `
     <header class='header'>
       <nav class='nav'>
-        <a href='/'>Home</a>
+        <a href='/'>Summarize</a>
         ${total} records
         @${compact(criteria).join('<wbr>:<wbr>') || 'Root'}${params.next ? `<wbr>:<wbr>${params.next}` : ''}
         ${criteria.length || params.next ? '<a href="/data">Reset</a>' : ''}
       </nav>
     </header>
 
-    ${next.cursor ? `<a class='next' href='/data?${q({ next: next.cursor })}'>
+    ${next.cursor && total >= 150 ? `<a class='next' href='/data?${q({ next: next.cursor })}'>
       ➝
     </a>` : ''}
 
@@ -40,6 +40,7 @@ export default ({ total, next, params, headings }) => {
         <th class='heading__cell--datetime priority--secondary'>Datetime</th>
         <th class='heading__cell--fingerprint'>Fingerprint</th>
         <th class='heading__cell--ip priority--tertiary'>IP</th>
+        <th class='heading__cell--ip priority--tertiary'>Location</th>
         <th class='heading__cell--referer priority--secondary'>Referer</th>
       </thead>
       <tbody>
@@ -72,6 +73,10 @@ export default ({ total, next, params, headings }) => {
 
               <td class='heading__cell--ip priority--tertiary'>
                 <a href='/data?${q({ ip: heading.ip })}'>${heading.ip}</a>
+              </td>
+
+              <td title='${heading.location.coordinates.join(', ')}' class='heading__cell--ip priority--tertiary'>
+                ${heading.location.country}
               </td>
 
               <td class='heading__cell--referer priority--secondary'>
