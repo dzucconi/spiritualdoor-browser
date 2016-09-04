@@ -8,3 +8,12 @@ export const truncate = (x, length, remainder = '…') =>
 
 export const pluck = (obj, properties) =>
   compact(properties.map(property => obj[property]));
+
+export const numberWord = n =>
+  ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'][n] || n;
+
+export const nAndThen = xs =>
+  xs.join(', ').replace(/,\s([^,]+)$/, ', and then $1');
+
+export const last = xs =>
+  xs[xs.length - 1];
