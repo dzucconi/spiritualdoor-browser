@@ -63,7 +63,7 @@ table {
   }
 
   td {
-    padding: 0.75em 1em;
+    padding: 0.33em 1em;
   }
 
 .monospace {
@@ -203,6 +203,8 @@ table {
 
 .precis__cross {
   display: inline-block;
+  margin-left: -2em;
+  cursor: default;
 }
 
 .precis a {
@@ -215,6 +217,9 @@ table {
 @media (max-width: 800px) {
   .precis {
     font-size: 18px;
+  }
+  .precis__cross {
+    margin: 0;
   }
 }
 @media (max-width: 600px) {
