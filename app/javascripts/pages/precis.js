@@ -13,7 +13,7 @@ const toSentence = xs => {
   const structure = collapse(xs.map(x => x.name.toLowerCase()))
     .reduce((memo, x) => {
       if (x instanceof Array) {
-        memo.push(`held a bearing of ${x[0]} for ${numberWord(x.length)} seconds`);
+        memo.push(`maintained a heading of ${x[0]} for ${numberWord(x.length)} seconds`);
       } else {
         memo.push(memo.length === 0 ? `faced ${x}` : `turned to face ${x}`);
       }
