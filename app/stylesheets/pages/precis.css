@@ -1,0 +1,21 @@
+.precis {
+  font-family: serif;
+  font-size: 36px;
+  width: 80%;
+  margin: 0 auto 100vh auto;
+  padding: 1em 0;
+}
+
+@media (max-width: 800px) {
+  .precis {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .precis {
+    width: 100%;
+    padding: 1em;
+    font-size: 24px;
+  }
+}

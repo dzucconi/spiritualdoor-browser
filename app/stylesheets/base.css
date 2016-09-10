@@ -1,0 +1,64 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+@keyframes flash {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: sans-serif;
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+a,
+a:visited {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: normal;
+  font-size: 100%;
+  margin: 0;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+  th,
+  td {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+  }
+
+  th {
+    padding: 1em;
+    font-weight: bold;
+    border-top: 2px solid white;
+  }
+
+  td {
+    padding: 0.33em 1em;
+  }

@@ -1,0 +1,34 @@
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.indicator {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 15px;
+  height: 15px;
+  z-index: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: opacity 0.33s;
+  opacity: 0;
+}
+  .indicator:after {
+    display: block;
+    content: '';
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    border-width: 2px;
+    border-style: solid;
+    border-bottom-color: black;
+    border-right-color: white;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    animation: spin 0.5s infinite linear;
+  }
+
+  .indicator[data-state='loading'] {
+    opacity: 1;
+  }

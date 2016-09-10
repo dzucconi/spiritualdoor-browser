@@ -1,0 +1,58 @@
+.visualization {
+  position: fixed;
+  width: 50px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  margin-left: -25px;
+  margin-top: -50px;
+  z-index: 1;
+  pointer-events: none;
+}
+  .visualization__cross {
+    position: absolute;
+  }
+
+.headings {
+  width: 80%;
+  margin-bottom: 100vh;
+  font-size: 1rem;
+}
+  .heading {}
+    .heading__cell {}
+      .heading__cell--cross {
+        width: 1em;
+      }
+      .heading__cell--value {}
+      .heading__cell--datetime {}
+      .heading__cell--fingerprint {}
+      .heading__cell--ip {}
+      .heading__cell--referer {}
+
+      .heading__cross {
+        display: inline-block;
+      }
+
+@media (max-width: 800px) {
+  .headings {
+    width: 90%;
+  }
+
+  .priority--tertiary {
+    display: none;
+    visibility: collapse;
+    width: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .headings {
+    width: 100%;
+  }
+
+  .priority--secondary {
+    display: none;
+    visibility: collapse;
+    width: 0;
+  }
+}

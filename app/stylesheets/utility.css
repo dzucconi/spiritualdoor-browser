@@ -1,0 +1,13 @@
+.monospace {
+  font-family: monospace;
+}
+
+.sans {
+  font-family: sans-serif;
+  font-size: 90%;
+}
+
+.flip {
+  display: inline-block;
+  transform: scaleX(-1);
+}

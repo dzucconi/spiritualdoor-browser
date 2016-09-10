@@ -16,18 +16,26 @@ export default ({ total, next, params, headings }) => {
   ]);
 
   return `
-    <header class='header'>
-      <nav class='nav'>
-        <a href='/'>Summarize</a>
-        ${total} records
-        @${compact(criteria).join('<wbr>:<wbr>') || 'Root'}${params.next ? `<wbr>:<wbr>${params.next}` : ''}
-        ${criteria.length || params.next ? '<a href="/data">Reset</a>' : ''}
-      </nav>
-    </header>
+    <nav class='nav'>
+      ${total} records
+      @${compact(criteria).join('<wbr>:<wbr>') || 'Root'}${params.next ? `<wbr>:<wbr>${params.next.split(':')[0]}` : ''}
 
-    ${next.cursor && total >= 150 ? `<a class='next' href='/data?${q({ next: next.cursor })}'>
-      ➝
-    </a>` : ''}
+      <br>
+
+      ${params.next ? `
+        <a href='/data?${q({ next: null })}'>⇤</a>
+        <a class='flip' onclick='history.back()'>➝</a>
+      ` : ''}
+
+      <a href='/'>●</a>
+
+      ${criteria.length || params.next ? '<a href="/data">Reset</a>' : ''}
+
+      ${next.cursor && total >= 150 ? `<a href='/data?${q({ next: next.cursor })}'>
+        ➝
+      </a>` : ''}
+
+    </nav>
 
     <div id='visualization' class='visualization'>
       <!-- Rendered separately -->

@@ -17,3 +17,16 @@ export const nAndThen = xs =>
 
 export const last = xs =>
   xs[xs.length - 1];
+
+// Hack for initial iOS render CSS3 animations
+export const empty = el => res => {
+  el('<div></div>');
+  return wait().then(() => res);
+};
+
+export const indexBy = (xs, prop) =>
+  xs.reduce((memo, x) => {
+    memo[x[prop]] = memo[x[prop]] || [];
+    memo[x[prop]].push(x);
+    return memo;
+  }, {});

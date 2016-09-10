@@ -1,0 +1,26 @@
+.header {
+  margin: 1em 0;
+  text-align: center;
+  padding: 1em;
+}
+
+.nav {
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1em;
+  font-size: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  transform: translateZ(0);
+  z-index: 1;
+}
+  .nav > a {
+    display: inline-block;
+    padding: 0 0.5em;
+    transition: opacity 0.125s;
+  }
+    .nav > a:hover {
+      opacity: 0.5;
+    }
