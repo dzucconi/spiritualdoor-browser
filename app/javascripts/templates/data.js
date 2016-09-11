@@ -48,8 +48,8 @@ export default ({ total, next, params, headings }) => {
         <th class='heading__cell--datetime priority--secondary'>Datetime</th>
         <th class='heading__cell--fingerprint'>Fingerprint</th>
         <th class='heading__cell--ip priority--tertiary'>IP</th>
-        <th class='heading__cell--ip priority--tertiary'>Location</th>
-        <th class='heading__cell--referer priority--secondary'>Referer</th>
+        <th class='heading__cell--ip'>Location</th>
+        <!-- <th class='heading__cell--referer priority--secondary'>Referer</th> -->
       </thead>
       <tbody>
         ${headings.map(heading => {
@@ -83,15 +83,15 @@ export default ({ total, next, params, headings }) => {
                 <a href='/data?${q({ ip: heading.ip })}'>${heading.ip}</a>
               </td>
 
-              <td title='${heading.location.coordinates.join(', ')}' class='heading__cell--ip priority--tertiary'>
+              <td title='${heading.location.coordinates.join(', ')}' class='heading__cell--ip'>
                 ${heading.location.country}
               </td>
 
-              <td class='heading__cell--referer priority--secondary'>
+              <!-- <td class='heading__cell--referer priority--secondary'>
                 <a href='/data?${q({ referer: heading.referer })}'>
                   ${truncate(heading.referer, 50)}
                 </a>
-              </td>
+              </td> -->
             </tr>
           `;
         }).join('')}
