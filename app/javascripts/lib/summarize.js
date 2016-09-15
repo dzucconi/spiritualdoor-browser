@@ -33,7 +33,7 @@ const precis = (key, session) =>
     place(session),
 
     // Identify person
-    truncate(key, 7, ''),
+    `<span class='precis__fingerprint'>${truncate(key, 7, '')}</span>`,
 
     // Summarize directional steps
     `${nAndThen(steps(session))}.`,

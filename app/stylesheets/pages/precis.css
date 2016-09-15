@@ -2,9 +2,13 @@
   font-family: serif;
   font-size: 36px;
   width: 80%;
-  margin: 0 auto 100vh auto;
+  margin: 0 auto 150px auto;
   padding: 1em 0;
 }
+  .precis__fingerprint {
+    font-family: sans-serif;
+    font-size: 90%;
+  }
 
 @media (max-width: 800px) {
   .precis {
