@@ -13,22 +13,22 @@
     "deploy": "npm run prod && s3-cli --delete-removed --acl-public --config .s3config sync public/ s3://browser.openpseudonym.org/"
   },
   "dependencies": {
-    "moment": "^2.14.1",
-    "page": "^1.7.1",
-    "whatwg-fetch": "^1.0.0"
+    "moment": "2.29.4",
+    "page": "1.11.6",
+    "whatwg-fetch": "1.1.1"
   },
   "devDependencies": {
-    "auto-reload-brunch": "^2.0.0",
-    "autoprefixer": "^6.4.1",
-    "babel-brunch": "~6.0.0",
-    "babel-preset-es2015": "~6.3.13",
-    "brunch": "^2.4.0",
-    "clean-css-brunch": "^2.0.0",
-    "css-brunch": "^2.0.0",
-    "digest-brunch": "^1.5.1",
-    "javascript-brunch": "^2.0.0",
-    "postcss-brunch": "^2.0.3",
-    "s3-cli": "^0.13.0",
-    "uglify-js-brunch": "^2.0.0"
+    "auto-reload-brunch": "2.7.1",
+    "autoprefixer": "6.7.7",
+    "babel-brunch": "6.0.6",
+    "babel-preset-es2015": "6.3.13",
+    "brunch": "2.10.17",
+    "clean-css-brunch": "2.10.0",
+    "css-brunch": "2.10.0",
+    "digest-brunch": "1.6.0",
+    "javascript-brunch": "2.10.0",
+    "postcss-brunch": "2.10.1",
+    "s3-cli": "0.13.0",
+    "uglify-js-brunch": "2.10.0"
   }
 }
