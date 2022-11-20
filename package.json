@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "auto-reload-brunch": "^2.0.0",
-    "autoprefixer": "^6.4.1",
+    "autoprefixer": "^10.0.0",
     "babel-brunch": "~6.0.0",
     "babel-preset-es2015": "~6.3.13",
     "brunch": "^2.4.0",
