@@ -15,7 +15,7 @@
   "dependencies": {
     "moment": "^2.14.1",
     "page": "^1.7.1",
-    "whatwg-fetch": "^1.0.0"
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "auto-reload-brunch": "^2.0.0",
